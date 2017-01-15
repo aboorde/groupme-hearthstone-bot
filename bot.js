@@ -2,6 +2,7 @@ var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 var unirest = require('unirest');
 var request = require('request');
+var ImageService = require('groupme').ImageService;
 
 var botID = process.env.BOT_ID;
 var mashapeKey = process.env.MASHAPE_KEY;
@@ -19,37 +20,17 @@ function cardSearch(searchText) {
       console.log("apiImgUrl: ");
       console.log(apiImgUrl);
 
-var headers = {
-    'X-Access-Token': botID,
-    'Content-Type': 'image/png'
-  };
-
-  var options = {
-    url: 'https://image.groupme.com/pictures',
-    method: 'POST',
-    headers: headers,
-    body: apiImgUrl
-  };
-
-  function callback(error, response, body) {
-    if (!error && response.statusCode == 200) {
-      console.log("groupme img url")
-      console.log(body);
-    }
-    else {
-      console.log("error in img service");
-      console.log("error");
-      console.log(error);
-      console.log(response);
-      console.log(body);
-    }
-  }
-  console.log('boop');
-  request(options, callback); 
-
+  ImageService.post(
+    apiImgUrl, 
+      function(err,ret) {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log(ret); 
+        }
+      });
     });
 
-   
 }
 
 function respond() {

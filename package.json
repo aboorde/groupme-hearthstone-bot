@@ -9,6 +9,7 @@
   "dependencies": {
     "cool-ascii-faces": "~1.3.x",
     "director": "",
+    "groupme": "^0.5.7",
     "request": "^2.79.0",
     "unirest": "^0.5.1"
   },
