@@ -7,13 +7,14 @@ var botID = process.env.BOT_ID;
 var mashapeKey = process.env.MASHAPE_KEY;
 
 function cardSearch(searchText) {
-  var apiUrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/' + searchText;
+  var apiUrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/' + searchText + '?collectible=1';
   var apiImgUrl = '';
   unirest.get(apiUrl)
     .header("X-Mashape-Key", mashapeKey)
     .end(function (result) {
       console.log(result.status);
       console.log(result.body);
+      console.log("test: " +result.body[0].img);
       apiImgUrl = result.body.img;
       console.log("apiImgUrl: ");
       console.log(apiImgUrl);
