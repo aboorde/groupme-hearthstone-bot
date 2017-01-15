@@ -22,6 +22,7 @@ function cardSearch(searchText) {
       apiImgUrl = result.body[0].img;
       console.log("apiImgUrl: ");
       console.log(apiImgUrl);
+      return apiImgUrl;
     });
 }
 
@@ -45,8 +46,8 @@ function respond() {
 function postMessage(searchText) {
   var botResponse, options, body, botReq;
 
-  cardSearch(searchText);
-
+  botResponse = cardSearch(searchText).toString();
+  console.log(botResponse);
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
@@ -55,7 +56,7 @@ function postMessage(searchText) {
 
   body = {
     "bot_id" : botID,
-    "text" : apiImgUrl
+    "text" : botResponse
   };
 
   console.log('sending ' + 'botResponse' + ' to ' + botID);
