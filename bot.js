@@ -3,6 +3,8 @@ var cool = require('cool-ascii-faces');
 var unirest = require('unirest');
 var request = require('request');
 var ImageService = require('groupme').ImageService;
+var http = require('http');
+var fs = require('fs');
 
 var botID = process.env.BOT_ID;
 var mashapeKey = process.env.MASHAPE_KEY;
@@ -19,17 +21,20 @@ function cardSearch(searchText) {
       apiImgUrl = result.body[0].img;
       console.log("apiImgUrl: ");
       console.log(apiImgUrl);
-
-  ImageService.post(
-    apiImgUrl, 
-      function(err,ret) {
-        if (err) {
-          console.log(err)
-        } else {
-          console.log(ret); 
-        }
+      var file = fs.createWriteStream("file.png");
+      var imgRequest = http.get("http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg", function(response) {
+        response.pipe(file);
       });
-    });
+      ImageService.post(
+        file, 
+          function(err,ret) {
+            if (err) {
+              console.log(err)
+            } else {
+              console.log(ret); 
+            }
+          });
+        });
 
 }
 
