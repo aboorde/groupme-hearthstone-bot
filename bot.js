@@ -9,9 +9,10 @@ var fs = require('fs');
 var botID = process.env.BOT_ID;
 var mashapeKey = process.env.MASHAPE_KEY;
 
+var apiImgUrl = '';
+
 function cardSearch(searchText) {
   var apiUrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/' + searchText + '?collectible=1';
-  var apiImgUrl = '';
   unirest.get(apiUrl)
     .header("X-Mashape-Key", mashapeKey)
     .end(function (result) {
@@ -21,21 +22,7 @@ function cardSearch(searchText) {
       apiImgUrl = result.body[0].img;
       console.log("apiImgUrl: ");
       console.log(apiImgUrl);
-      var file = fs.createWriteStream("file.png");
-      var imgRequest = http.get(apiImgUrl, function(response) {
-        response.pipe(file);
-      });
-      ImageService.post(
-        file, 
-          function(err,ret) {
-            if (err) {
-              console.log(err)
-            } else {
-              console.log(ret); 
-            }
-          });
-        });
-
+    });
 }
 
 function respond() {
@@ -68,7 +55,7 @@ function postMessage(searchText) {
 
   body = {
     "bot_id" : botID,
-    "text" : 'test'
+    "text" : apiImgUrl
   };
 
   console.log('sending ' + 'botResponse' + ' to ' + botID);
