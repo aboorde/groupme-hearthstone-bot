@@ -18,9 +18,8 @@ function cardSearch(searchText) {
       apiImgUrl = result.body[0].img;
       console.log("apiImgUrl: ");
       console.log(apiImgUrl);
-    });
 
-  var headers = {
+var headers = {
     'X-Access-Token': botID,
     'Content-Type': 'image/png'
   };
@@ -46,7 +45,11 @@ function cardSearch(searchText) {
     }
   }
   console.log('boop');
-  request(options, callback);  
+  request(options, callback); 
+
+    });
+
+   
 }
 
 function respond() {
