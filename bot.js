@@ -46,6 +46,8 @@ function respond() {
       botRegex = /^\!card$/;
   var searchText;
   var command = request.text.split(' ')[0];
+  console.log("command: " + command.text);
+  console.log("regex test: " + botRegex.test(command.text));
   if(request.text && botRegex.test(command.text)) {
     searchText = request.substr(request.indexOf(' ')+1);
     this.res.writeHead(200);
