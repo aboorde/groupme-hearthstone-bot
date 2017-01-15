@@ -22,7 +22,7 @@ function cardSearch(searchText) {
       console.log("apiImgUrl: ");
       console.log(apiImgUrl);
       var file = fs.createWriteStream("file.png");
-      var imgRequest = http.get("http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg", function(response) {
+      var imgRequest = http.get(apiImgUrl, function(response) {
         response.pipe(file);
       });
       ImageService.post(
