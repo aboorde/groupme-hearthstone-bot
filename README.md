@@ -1,12 +1,15 @@
-# Sample GroupMe NodeJS Callback Bot
+# GroupMe Hearthstone Bot
+
+![Finished Product](groupme.jpg)
 
 ## Introduction
 
-This project shows the capability of a bot to react to messages sent within a group.
+This project allows users to use a bot to search Hearthstone cards and returns the most 
+relavant card as an image to the group
 
 ## Contents
 
-  * [Quickly get our sample bot up and running in your groups](#deploy)
+  * [Quickly set up the bot](#deploy)
     * Deploy the code to heroku
     * Create a bot
     * Configure to your bot's credentials
@@ -27,16 +30,6 @@ This project shows the capability of a bot to react to messages sent within a gr
 Be sure to log into heroku, using your heroku credentials, then click the link below.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-You should be taken to a page that looks like this:
-
-![Deploy to Heroku](http://i.groupme.com/837x662.png.36c63698644a4f61a9ff3d5af91caa5e)
-
-Optionally, you can give your app a name, or instead leave
-it blank and let Heroku name it for you (you can change it later).
-
-![Success](https://i.groupme.com/959x932.png.85e7959a8a9a41c6b20f5f6b50aceecb)
-
 
 ## Next, create a GroupMe Bot:
 
@@ -75,37 +68,15 @@ On your Bot's page, copy the Bot ID
 
 ## Add your Bot ID to your Heroku app:
 
-Go here to see all of your Heroku apps and select the one you just created before:
-
-https://dashboard-next.heroku.com/apps
-
-![Select your heroku app](http://i.groupme.com/920x722.png.46154d6b95f249539c594b129ddb7732)
-
-On your app page, click settings in the top navigation:
-
-![Go to your app's settings](http://i.groupme.com/722x127.png.27c0a2e83c524064bd41bb66df76d14c)
-
-On your app's setting page, find the Config Vars section and click the Reveal Config Vars button:
-
-![Reveal your environment variables](http://i.groupme.com/606x181.png.94d5157963bc419886e98e038e3195c3)
-
-Then click edit:
-
-![Edit your environment variables](http://i.groupme.com/796x212.png.b8979454fc4742c7bae688ac67262755)
-
-Fill out the form to add an environment variable to your app:
-
-  * In the "key" field type: BOT_ID
-  * In the "value" field paste your Bot ID that you copied in the previous steps
-  * Click the save button
+  * Go to your [Heroku Dashboard](https://dashboard.heroku.com/apps)
+  * Choose the recently deployed Hearthstone app and go to settings
+  * Add your BOT_ID and MASHAPE_KEY to the Config Variables using those two names as keys
 
 ![Add the Bot ID environment variable](http://i.groupme.com/784x148.png.5790498a7acd46b289aca2be43e9c84e)
 
 ## Now go test your bot!
 
-Go to GroupMe and type "/cool guy" in the group where your bot lives to see it in action.
-
-![Test your Bot](http://i.groupme.com/821x587.png.7bcf55bed1c64acab83fa2c2ad0b0862)
+Go to GroupMe and type "!card heroic strike" to have the bot respond with a card
 
 # Make it your own<a name="pull"></a>
 
