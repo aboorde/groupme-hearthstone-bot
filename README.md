@@ -1,6 +1,6 @@
 # GroupMe Hearthstone Bot
 
-![Finished Product](groupme.jpg)
+![Finished Product](https://raw.githubusercontent.com/aboorde/groupme-hearthstone-bot/master/groupme.JPG)
 
 ## Introduction
 
