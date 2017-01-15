@@ -1,6 +1,7 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 var unirest = require('unirest');
+var request = require('request');
 
 var botID = process.env.BOT_ID;
 var mashapeKey = process.env.MASHAPE_KEY;
@@ -16,8 +17,6 @@ function cardSearch(searchText) {
       console.log(result.body);
       apiImgUrl = result.body.img;
     });
-
-  var request = require('request');
 
   var headers = {
     'X-Access-Token': botID,
@@ -46,9 +45,6 @@ function respond() {
       botRegex = /^\!card$/;
   var searchText;
   var command = request.text.split(' ')[0];
-  console.log("req: " + request.text);
-  console.log("command: " + command);
-  console.log("regex test: " + botRegex.test(command));
   if(request.text && botRegex.test(command)) {
     searchText = request.text.substr(request.text.indexOf(' ')+1);
     this.res.writeHead(200);
@@ -64,7 +60,7 @@ function respond() {
 function postMessage(searchText) {
   var botResponse, options, body, botReq;
 
-  //botResponse = cardSearch(searchText);
+  cardSearch(searchText);
 
   options = {
     hostname: 'api.groupme.com',
