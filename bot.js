@@ -9,7 +9,7 @@ var mashapeKey = process.env.MASHAPE_KEY;
 function cardSearch(searchText) {
   var apiUrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/' + searchText;
   var apiImgUrl = '';
-  unirest.get("https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/{name}")
+  unirest.get(apiUrl)
     .header("X-Mashape-Key", mashapeKey)
     .end(function (result) {
       console.log(result.status);
@@ -34,6 +34,9 @@ function cardSearch(searchText) {
     if (!error && response.statusCode == 200) {
       console.log("groupme img url")
       console.log(body);
+    }
+    else {
+      console.log("error in img service");
     }
   }
 
