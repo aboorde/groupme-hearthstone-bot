@@ -1,30 +1,19 @@
 var HTTPS = require('https');
-var cool = require('cool-ascii-faces');
 var unirest = require('unirest');
-var request = require('request');
-var ImageService = require('groupme').ImageService;
-var http = require('http');
-var fs = require('fs');
-var Promise = require('promise');
 
 var botID = process.env.BOT_ID;
 var mashapeKey = process.env.MASHAPE_KEY;
 
 var apiImgUrl = '';
+
 function cardSearch(searchText) {
   var apiUrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/' + searchText + '?collectible=1';
   unirest.get(apiUrl)
     .header("X-Mashape-Key", mashapeKey)
     .end(function (result) {
-      console.log(result.status);
-      console.log(result.body);
-      console.log("test: " +result.body[0].img);
       apiImgUrl = result.body[0].img;
-      console.log("apiImgUrl: ");
-      console.log(apiImgUrl);
       postMessage();
     });
-
 }
 
 function respond() {
@@ -32,6 +21,7 @@ function respond() {
       botRegex = /^\!card$/;
   var searchText;
   var command = request.text.split(' ')[0];
+
   if(request.text && botRegex.test(command)) {
     searchText = request.text.substr(request.text.indexOf(' ')+1);
     this.res.writeHead(200);
@@ -52,14 +42,13 @@ function postMessage() {
     path: '/v3/bots/post',
     method: 'POST'
   };
-  console.log("apiImgUrl");
-  console.log(apiImgUrl);
+
   body = {
     "bot_id" : botID,
     "text" : apiImgUrl
   };
 
-  console.log('sending ' + 'botResponse' + ' to ' + botID);
+  console.log('sending ' + apiImgUrl + ' to ' + botID);
 
   botReq = HTTPS.request(options, function(res) {
       if(res.statusCode == 202) {

@@ -1,8 +1,7 @@
-var http, director, cool, bot, router, server, port, unirest;
+var http, director, bot, router, server, port, unirest;
 
 http        = require('http');
 director    = require('director');
-cool        = require('cool-ascii-faces');
 bot         = require('./bot.js');
 unirest     = require('unirest');
 
