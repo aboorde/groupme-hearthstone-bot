@@ -15,7 +15,7 @@ function cardSearch(searchText) {
       console.log(result.status);
       console.log(result.body);
       console.log("test: " +result.body[0].img);
-      apiImgUrl = result.body.img;
+      apiImgUrl = result.body[0].img;
       console.log("apiImgUrl: ");
       console.log(apiImgUrl);
     });
