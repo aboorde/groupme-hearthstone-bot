@@ -9,7 +9,6 @@ var fs = require('fs');
 var botID = process.env.BOT_ID;
 var mashapeKey = process.env.MASHAPE_KEY;
 
-var apiImgUrl = '';
 
 function cardSearch(searchText) {
   var apiUrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/' + searchText + '?collectible=1';
@@ -45,16 +44,27 @@ function respond() {
 }
 
 function postMessage(searchText) {
-  var botResponse, options, body, botReq;
+  var options, body, botReq;
+  var apiImgUrl = '';
+  var apiUrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/search/' + searchText + '?collectible=1';
+  unirest.get(apiUrl)
+    .header("X-Mashape-Key", mashapeKey)
+    .end(function (result) {
+      console.log(result.status);
+      console.log(result.body);
+      console.log("test: " +result.body[0].img);
+      apiImgUrl = result.body[0].img;
+      console.log("apiImgUrl: ");
+      console.log(apiImgUrl);
+    });
 
-  botResponse = cardSearch(searchText);
-  console.log(botResponse);
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
     method: 'POST'
   };
-
+  console.log("apiImgUrl");
+  console.log(apiImgUrl);
   body = {
     "bot_id" : botID,
     "text" : apiImgUrl
