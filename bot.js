@@ -47,9 +47,9 @@ function respond() {
   var searchText;
   var command = request.text.split(' ')[0];
   console.log("req: " + request.text);
-  console.log("command: " + command.text);
-  console.log("regex test: " + botRegex.test(command.text));
-  if(request.text && botRegex.test(command.text)) {
+  console.log("command: " + command);
+  console.log("regex test: " + botRegex.test(command));
+  if(request.text && botRegex.test(command)) {
     searchText = request.substr(request.indexOf(' ')+1);
     this.res.writeHead(200);
     postMessage(searchText);
