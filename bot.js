@@ -46,7 +46,7 @@ function respond() {
 function postMessage(searchText) {
   var botResponse, options, body, botReq;
 
-  botResponse = cardSearch(searchText).toString();
+  botResponse = cardSearch(searchText);
   console.log(botResponse);
   options = {
     hostname: 'api.groupme.com',
