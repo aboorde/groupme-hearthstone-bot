@@ -45,7 +45,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /^\!card$/;
   var searchText;
-  var command = request.split(' ')[0];
+  var command = request.text.split(' ')[0];
   if(request.text && botRegex.test(command.text)) {
     searchText = request.substr(request.indexOf(' ')+1);
     this.res.writeHead(200);
