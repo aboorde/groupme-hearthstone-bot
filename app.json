@@ -1,0 +1,7 @@
+{
+  "name": "GroupMe Hearthstone Bot",
+  "description": "Hearthstone Groupme Bot written in Node",
+  "repository": "https://github.com/aboorde/groupme-hearthstone-bot",
+  "logo": "http://www.gravatar.com/avatar/1bc22e8b8accf3339f5f7dd2c4c9ba5f.jpg",
+  "keywords": ["node"]
+}
