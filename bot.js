@@ -39,9 +39,13 @@ function cardSearch(searchText) {
     }
     else {
       console.log("error in img service");
+      console.log("error");
+      console.log(error);
+      console.log(response);
+      console.log(body);
     }
   }
-
+  console.log('boop');
   request(options, callback);  
 }
 
