@@ -13,9 +13,10 @@ function cardSearch(searchText) {
     .header("X-Mashape-Key", mashapeKey)
     .end(function (result) {
       console.log(result.status);
-      console.log(result.headers);
       console.log(result.body);
       apiImgUrl = result.body.img;
+      console.log("apiImgUrl: ");
+      console.log(apiImgUrl);
     });
 
   var headers = {
