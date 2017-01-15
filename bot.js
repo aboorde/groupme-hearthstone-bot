@@ -22,8 +22,9 @@ function cardSearch(searchText) {
       apiImgUrl = result.body[0].img;
       console.log("apiImgUrl: ");
       console.log(apiImgUrl);
-      return apiImgUrl;
+      
     });
+    return apiImgUrl;
 }
 
 function respond() {
@@ -56,7 +57,7 @@ function postMessage(searchText) {
 
   body = {
     "bot_id" : botID,
-    "text" : botResponse
+    "text" : apiImgUrl
   };
 
   console.log('sending ' + 'botResponse' + ' to ' + botID);
