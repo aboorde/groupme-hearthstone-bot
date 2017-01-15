@@ -23,7 +23,7 @@ function cardSearch(searchText) {
       console.log(apiImgUrl);
       
     });
-    return apiImgUrl;
+
 }
 
 function respond() {
@@ -34,8 +34,16 @@ function respond() {
   if(request.text && botRegex.test(command)) {
     searchText = request.text.substr(request.text.indexOf(' ')+1);
     this.res.writeHead(200);
-    cardSearch(searchText);
-    postMessage();
+    new Promise(function(resolve, reject){
+      cardSearch(searchText);
+      resolve();
+    }).then(function(result) {
+      // do something else in B
+      postMessage();
+      return result;
+    });
+    //cardSearch(searchText);
+    //postMessage();
     this.res.end();
   } else {
     console.log("don't care");
