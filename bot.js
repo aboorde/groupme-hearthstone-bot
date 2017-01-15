@@ -5,6 +5,7 @@ var request = require('request');
 var ImageService = require('groupme').ImageService;
 var http = require('http');
 var fs = require('fs');
+var Promise = require('promise');
 
 var botID = process.env.BOT_ID;
 var mashapeKey = process.env.MASHAPE_KEY;
